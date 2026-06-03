@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+
+
+
+<DBData>
+    <user>root</user>
+    <password>200427</password>
+    <host>localhost</host>
+    <port>3306</port>
+    <DB>inventorydb</DB>
+</DBData>
+
