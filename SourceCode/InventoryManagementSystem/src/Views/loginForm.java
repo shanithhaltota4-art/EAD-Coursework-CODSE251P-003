@@ -218,13 +218,15 @@ try {
     ResultSet rs = pst.executeQuery();
 
     if(rs.next()){
+        String fullName = rs.getString("full_name");
+        String role = rs.getString("role");
 
         JOptionPane.showMessageDialog(
                 this,
                 "Login Successful"
         );
 
-        DashboardForm dashboard = new DashboardForm();
+        DashboardForm dashboard = new DashboardForm(fullName,role);
         dashboard.setVisible(true);
 
         this.dispose();
@@ -240,10 +242,7 @@ try {
 
 } catch (Exception e) {
 
-    JOptionPane.showMessageDialog(
-            this,
-            e.getMessage()
-    );
+    JOptionPane.showMessageDialog(this,e.getMessage());
 
 }// TODO add your handling code here:
     }//GEN-LAST:event_btnLoginActionPerformed
