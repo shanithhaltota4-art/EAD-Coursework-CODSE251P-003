@@ -98,13 +98,13 @@ public class DashboardForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnProducts = new javax.swing.JButton();
+        btnSuppliers = new javax.swing.JButton();
+        btnCustomers = new javax.swing.JButton();
         btnLogOut = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnSales = new javax.swing.JButton();
+        btnReports = new javax.swing.JButton();
+        btnUsers = new javax.swing.JButton();
         pnlHeader = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -150,30 +150,31 @@ public class DashboardForm extends javax.swing.JFrame {
         jButton1.setFocusPainted(false);
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
-        jButton2.setBackground(new java.awt.Color(31, 41, 55));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Products");
-        jButton2.setBorderPainted(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setFocusPainted(false);
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        btnProducts.setBackground(new java.awt.Color(31, 41, 55));
+        btnProducts.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnProducts.setForeground(new java.awt.Color(255, 255, 255));
+        btnProducts.setText("Products");
+        btnProducts.setBorderPainted(false);
+        btnProducts.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnProducts.setFocusPainted(false);
+        btnProducts.addActionListener(this::btnProductsActionPerformed);
 
-        jButton3.setBackground(new java.awt.Color(31, 41, 55));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Suppliers");
-        jButton3.setBorderPainted(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setFocusPainted(false);
+        btnSuppliers.setBackground(new java.awt.Color(31, 41, 55));
+        btnSuppliers.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSuppliers.setForeground(new java.awt.Color(255, 255, 255));
+        btnSuppliers.setText("Suppliers");
+        btnSuppliers.setBorderPainted(false);
+        btnSuppliers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSuppliers.setFocusPainted(false);
+        btnSuppliers.addActionListener(this::btnSuppliersActionPerformed);
 
-        jButton4.setBackground(new java.awt.Color(31, 41, 55));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Customers");
-        jButton4.setBorderPainted(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setFocusPainted(false);
+        btnCustomers.setBackground(new java.awt.Color(31, 41, 55));
+        btnCustomers.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCustomers.setForeground(new java.awt.Color(255, 255, 255));
+        btnCustomers.setText("Customers");
+        btnCustomers.setBorderPainted(false);
+        btnCustomers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCustomers.setFocusPainted(false);
 
         btnLogOut.setBackground(new java.awt.Color(255, 51, 51));
         btnLogOut.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -184,47 +185,47 @@ public class DashboardForm extends javax.swing.JFrame {
         btnLogOut.setFocusPainted(false);
         btnLogOut.addActionListener(this::btnLogOutActionPerformed);
 
-        jButton6.setBackground(new java.awt.Color(31, 41, 55));
-        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Sales");
-        jButton6.setBorderPainted(false);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton6.setFocusPainted(false);
+        btnSales.setBackground(new java.awt.Color(31, 41, 55));
+        btnSales.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSales.setForeground(new java.awt.Color(255, 255, 255));
+        btnSales.setText("Sales");
+        btnSales.setBorderPainted(false);
+        btnSales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSales.setFocusPainted(false);
 
-        jButton7.setBackground(new java.awt.Color(31, 41, 55));
-        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Reports");
-        jButton7.setBorderPainted(false);
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton7.setFocusPainted(false);
+        btnReports.setBackground(new java.awt.Color(31, 41, 55));
+        btnReports.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnReports.setForeground(new java.awt.Color(255, 255, 255));
+        btnReports.setText("Reports");
+        btnReports.setBorderPainted(false);
+        btnReports.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReports.setFocusPainted(false);
 
-        jButton8.setBackground(new java.awt.Color(31, 41, 55));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Users");
-        jButton8.setBorderPainted(false);
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton8.setFocusPainted(false);
+        btnUsers.setBackground(new java.awt.Color(31, 41, 55));
+        btnUsers.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnUsers.setForeground(new java.awt.Color(255, 255, 255));
+        btnUsers.setText("Users");
+        btnUsers.setBorderPainted(false);
+        btnUsers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnUsers.setFocusPainted(false);
 
         javax.swing.GroupLayout pnlSidebarLayout = new javax.swing.GroupLayout(pnlSidebar);
         pnlSidebar.setLayout(pnlSidebarLayout);
         pnlSidebarLayout.setHorizontalGroup(
             pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnProducts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnSuppliers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnCustomers, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlSidebarLayout.createSequentialGroup()
                 .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnSales, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnReports, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnUsers, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlSidebarLayout.setVerticalGroup(
             pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,17 +236,17 @@ public class DashboardForm extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCustomers, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSales, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnReports, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -508,7 +509,7 @@ public class DashboardForm extends javax.swing.JFrame {
     }    
     }//GEN-LAST:event_btnLogOutActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductsActionPerformed
      
     pnlContent.removeAll();
 
@@ -521,13 +522,27 @@ public class DashboardForm extends javax.swing.JFrame {
     pnlContent.revalidate();
     pnlContent.repaint();
     
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnProductsActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      
 
  
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuppliersActionPerformed
+    
+    pnlContent.removeAll();
+
+    SupplierForm supplierForm = new SupplierForm();
+
+    pnlContent.setLayout(new java.awt.BorderLayout());
+
+    pnlContent.add(supplierForm, java.awt.BorderLayout.CENTER);
+
+    pnlContent.revalidate();
+    pnlContent.repaint();
+    }//GEN-LAST:event_btnSuppliersActionPerformed
 
     /**
      * @param args the command line arguments
@@ -555,14 +570,14 @@ public class DashboardForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCustomers;
     private javax.swing.JButton btnLogOut;
+    private javax.swing.JButton btnProducts;
+    private javax.swing.JButton btnReports;
+    private javax.swing.JButton btnSales;
+    private javax.swing.JButton btnSuppliers;
+    private javax.swing.JButton btnUsers;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
