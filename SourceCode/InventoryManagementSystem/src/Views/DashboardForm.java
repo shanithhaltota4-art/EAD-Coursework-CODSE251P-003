@@ -105,6 +105,7 @@ public class DashboardForm extends javax.swing.JFrame {
         btnSales = new javax.swing.JButton();
         btnReports = new javax.swing.JButton();
         btnUsers = new javax.swing.JButton();
+        btnPurchase = new javax.swing.JButton();
         pnlHeader = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -175,6 +176,7 @@ public class DashboardForm extends javax.swing.JFrame {
         btnCustomers.setBorderPainted(false);
         btnCustomers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCustomers.setFocusPainted(false);
+        btnCustomers.addActionListener(this::btnCustomersActionPerformed);
 
         btnLogOut.setBackground(new java.awt.Color(255, 51, 51));
         btnLogOut.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -208,6 +210,16 @@ public class DashboardForm extends javax.swing.JFrame {
         btnUsers.setBorderPainted(false);
         btnUsers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUsers.setFocusPainted(false);
+        btnUsers.addActionListener(this::btnUsersActionPerformed);
+
+        btnPurchase.setBackground(new java.awt.Color(31, 41, 55));
+        btnPurchase.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnPurchase.setForeground(new java.awt.Color(255, 255, 255));
+        btnPurchase.setText("Purchase");
+        btnPurchase.setBorderPainted(false);
+        btnPurchase.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPurchase.setFocusPainted(false);
+        btnPurchase.addActionListener(this::btnPurchaseActionPerformed);
 
         javax.swing.GroupLayout pnlSidebarLayout = new javax.swing.GroupLayout(pnlSidebar);
         pnlSidebar.setLayout(pnlSidebarLayout);
@@ -218,14 +230,17 @@ public class DashboardForm extends javax.swing.JFrame {
             .addComponent(btnSuppliers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnCustomers, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnSales, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnReports, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnPurchase, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlSidebarLayout.createSequentialGroup()
                 .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                    .addGroup(pnlSidebarLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnUsers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(btnSales, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnReports, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnUsers, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlSidebarLayout.setVerticalGroup(
             pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,13 +256,15 @@ public class DashboardForm extends javax.swing.JFrame {
                 .addComponent(btnSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCustomers, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSales, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPurchase, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnReports, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -487,7 +504,7 @@ public class DashboardForm extends javax.swing.JFrame {
                 .addComponent(pnlContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 1230, 644);
+        setBounds(0, 0, 1230, 705);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
@@ -544,6 +561,40 @@ public class DashboardForm extends javax.swing.JFrame {
     pnlContent.repaint();
     }//GEN-LAST:event_btnSuppliersActionPerformed
 
+    private void btnCustomersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomersActionPerformed
+   
+    pnlContent.removeAll();
+
+    CustomerForm customerForm = new CustomerForm();
+
+    pnlContent.setLayout(new java.awt.BorderLayout());
+
+    pnlContent.add(customerForm, java.awt.BorderLayout.CENTER);
+
+    pnlContent.revalidate();
+    pnlContent.repaint();
+    
+    }//GEN-LAST:event_btnCustomersActionPerformed
+
+    private void btnUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsersActionPerformed
+        
+
+    }//GEN-LAST:event_btnUsersActionPerformed
+
+    private void btnPurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPurchaseActionPerformed
+       
+    pnlContent.removeAll();
+
+    PurchaseForm purchaseForm = new PurchaseForm();
+
+    pnlContent.setLayout(new java.awt.BorderLayout());
+
+    pnlContent.add(purchaseForm, java.awt.BorderLayout.CENTER);
+
+    pnlContent.revalidate();
+    pnlContent.repaint();
+    }//GEN-LAST:event_btnPurchaseActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -573,6 +624,7 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JButton btnCustomers;
     private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnProducts;
+    private javax.swing.JButton btnPurchase;
     private javax.swing.JButton btnReports;
     private javax.swing.JButton btnSales;
     private javax.swing.JButton btnSuppliers;
