@@ -4,6 +4,7 @@
  */
 package Main;
 import java.sql.Connection;
+import Views.loginForm;
 
 public class Main {
     
@@ -20,6 +21,12 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new loginForm().setVisible(true);
+            }
+        });
+        
 
     }   
     
