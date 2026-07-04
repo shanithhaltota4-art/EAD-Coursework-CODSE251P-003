@@ -26,9 +26,16 @@ public class DashboardForm extends javax.swing.JFrame {
             
         setExtendedState(MAXIMIZED_BOTH);
     }
-    public DashboardForm(String fullName, String role) {
+    private String userId;
+    private String fullName;
+    private String role;
+    public DashboardForm(String userId,String fullName, String role) {
+        
+        
     initComponents();
-
+    this.userId = userId;
+    this.fullName = fullName;
+    this.role = role;
     lblUser.setText(fullName);
     lblRole.setText(role);
 
@@ -194,6 +201,7 @@ public class DashboardForm extends javax.swing.JFrame {
         btnSales.setBorderPainted(false);
         btnSales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSales.setFocusPainted(false);
+        btnSales.addActionListener(this::btnSalesActionPerformed);
 
         btnReports.setBackground(new java.awt.Color(31, 41, 55));
         btnReports.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -594,6 +602,17 @@ public class DashboardForm extends javax.swing.JFrame {
     pnlContent.revalidate();
     pnlContent.repaint();
     }//GEN-LAST:event_btnPurchaseActionPerformed
+
+    private void btnSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalesActionPerformed
+        pnlContent.removeAll();
+
+        SalesForm sales = new SalesForm(userId);
+
+        pnlContent.add(sales);
+
+        pnlContent.revalidate();
+        pnlContent.repaint();
+    }//GEN-LAST:event_btnSalesActionPerformed
 
     /**
      * @param args the command line arguments

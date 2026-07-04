@@ -192,7 +192,7 @@ public class loginForm extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String username = txtUsername.getText().trim();
-String password = String.valueOf(txtPassword.getPassword());
+        String password = String.valueOf(txtPassword.getPassword());
 
 if(username.isEmpty() || password.isEmpty()){
 
@@ -218,6 +218,7 @@ try {
     ResultSet rs = pst.executeQuery();
 
     if(rs.next()){
+        String userId = rs.getString("user_id");
         String fullName = rs.getString("full_name");
         String role = rs.getString("role");
 
@@ -226,7 +227,7 @@ try {
                 "Login Successful"
         );
 
-        DashboardForm dashboard = new DashboardForm(fullName,role);
+        DashboardForm dashboard = new DashboardForm(userId,fullName,role);
         dashboard.setVisible(true);
 
         this.dispose();
