@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author shani
@@ -139,6 +140,43 @@ private void loadSuppliers() {
     txtGrandTotal.setText(String.format("%.2f", grandTotal));
 
 }
+private int getNextPurchaseDetailNumber(Connection con) throws Exception {
+
+    String sql =
+            "SELECT purchase_detail_id "
+            + "FROM stock_purchase_details "
+            + "ORDER BY purchase_detail_id DESC LIMIT 1";
+
+    PreparedStatement pst = con.prepareStatement(sql);
+
+    ResultSet rs = pst.executeQuery();
+
+    if (rs.next()) {
+
+        String lastId = rs.getString("purchase_detail_id");
+
+        return Integer.parseInt(lastId.substring(3)) + 1;
+
+    }
+
+    return 1;
+
+}
+private void clearPurchaseForm() {
+
+    txtBuyingPrice.setText("");
+    txtQuantity.setText("");
+    txtGrandTotal.setText("");
+
+    cmbSupplier.setSelectedIndex(0);
+    cmbProduct.setSelectedIndex(0);
+
+    DefaultTableModel model =
+            (DefaultTableModel) tblPurchase.getModel();
+
+    model.setRowCount(0);
+
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -201,6 +239,7 @@ private void loadSuppliers() {
         jScrollPane1.setViewportView(tblPurchase);
 
         btnSavePurchase.setText("Save");
+        btnSavePurchase.addActionListener(this::btnSavePurchaseActionPerformed);
 
         btnClear.setText("Clear");
 
@@ -317,6 +356,137 @@ private void loadSuppliers() {
     cmbProduct.requestFocus();
 
     }//GEN-LAST:event_btnAddItemActionPerformed
+
+    private void btnSavePurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSavePurchaseActionPerformed
+        
+        try{
+        String selectedSupplier = cmbSupplier.getSelectedItem().toString();
+
+        String supplierId = selectedSupplier.split(" - ")[0];
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        String purchaseDate = sdf.format(dcPurchaseDate.getSelectedDate().getTime());
+        
+        double totalAmount = Double.parseDouble(txtGrandTotal.getText());
+        
+        Connection con = DBConnection.createConnection();
+        
+        con.setAutoCommit(false);
+        int detailNo = getNextPurchaseDetailNumber(con);
+
+        String sql =
+        "INSERT INTO stock_purchase "
+        + "(purchase_id,supplier_id,purchase_date,total_amount) "
+        + "VALUES (?,?,?,?)";
+
+        PreparedStatement pst = con.prepareStatement(sql);
+
+        pst.setString(1, txtPurchaseId.getText());
+        pst.setString(2, supplierId);
+        pst.setString(3, purchaseDate);
+        pst.setDouble(4, totalAmount);
+
+        int result = pst.executeUpdate();
+        
+        if(result > 0){
+
+    DefaultTableModel model =
+            (DefaultTableModel) tblPurchase.getModel();
+
+    for(int i = 0; i < model.getRowCount(); i++){
+        
+        String purchaseDetailId =
+        String.format("PDT%03d", detailNo);
+        detailNo++;
+
+        String productId =
+                model.getValueAt(i,0).toString();
+
+        double buyingPrice =
+                Double.parseDouble(
+                        model.getValueAt(i,2).toString());
+
+        int quantity =
+                Integer.parseInt(
+                        model.getValueAt(i,3).toString());
+
+        double subtotal =
+                Double.parseDouble(
+                        model.getValueAt(i,4).toString());
+                        
+        
+        
+        String sql2 =
+                "INSERT INTO stock_purchase_details "
+                + "(purchase_detail_id,"
+                + "purchase_id,"
+                + "product_id,"
+                + "quantity,"
+                + "buying_price,"
+                + "subtotal)"
+                + " VALUES (?,?,?,?,?,?)";
+
+        PreparedStatement pst2 = con.prepareStatement(sql2);
+
+        pst2.setString(1,purchaseDetailId);
+        pst2.setString(2,txtPurchaseId.getText());
+        pst2.setString(3,productId);
+        pst2.setInt(4,quantity);
+        pst2.setDouble(5,buyingPrice);
+        pst2.setDouble(6,subtotal);
+
+        pst2.executeUpdate();
+        
+        String sql3 =
+        "UPDATE product "
+        + "SET stock_qty = stock_qty + ? "
+        + "WHERE product_id = ?";
+
+        PreparedStatement pst3 = con.prepareStatement(sql3);
+
+        pst3.setInt(1, quantity);
+        pst3.setString(2, productId);
+
+        pst3.executeUpdate();
+
+    }
+    if(result > 0){
+        con.commit();
+
+        JOptionPane.showMessageDialog(this,"Purchase Saved Successfully!");
+    }
+    clearPurchaseForm();
+
+    generatePurchaseId();
+    
+
+}
+
+        }
+        catch (Exception e) {
+
+            Connection con = null;
+            if (con != null) {
+        try {
+            con.rollback();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            
+        }
+    }
+
+    JOptionPane.showMessageDialog(
+            this,
+            "Error while saving purchase!\n" + e.getMessage()
+    );
+
+    e.printStackTrace();
+
+}
+        
+        
+    }//GEN-LAST:event_btnSavePurchaseActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
