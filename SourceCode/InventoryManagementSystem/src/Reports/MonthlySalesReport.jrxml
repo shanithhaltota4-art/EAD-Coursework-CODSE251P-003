@@ -1,0 +1,107 @@
+<!-- Created with Jaspersoft Studio version 7.0.6.final using JasperReports Library version 7.0.6-5d2a603fdc6b3db8f842a83383e594f41891534d  -->
+<jasperReport name="MonthlySalesReport" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cbcaf5ea-b58d-46dc-8c15-8ca2fa8d67b9">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="InventoryDB"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<query language="sql"><![CDATA[SELECT
+    s.sale_id,
+    c.customer_name,
+    u.full_name,
+    s.sale_date,
+    s.total_amount
+FROM sales s
+INNER JOIN customer c
+        ON s.customer_id = c.customer_id
+INNER JOIN users u
+        ON s.user_id = u.user_id
+ORDER BY s.sale_date DESC;]]></query>
+	<field name="sale_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sale_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="sale_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sales"/>
+	</field>
+	<field name="customer_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="customer_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="customer_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer"/>
+	</field>
+	<field name="full_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="full_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="full_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
+	</field>
+	<field name="sale_date" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="sale_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="sale_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sales"/>
+	</field>
+	<field name="total_amount" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="total_amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sales"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="169" splitType="Stretch">
+		<element kind="staticText" uuid="c26d50b9-aada-41f9-89df-834e09559c18" x="2" y="0" width="550" height="30" fontName="Segoe UI" fontSize="20.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[Inventory Management & Sales Analytics System]]></text>
+		</element>
+		<element kind="staticText" uuid="95f329e4-4b8a-4fe4-abc5-d145a338b4e3" x="2" y="40" width="550" height="30" fontName="Segoe UI" fontSize="16.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[MONTHLY SALES REPORT]]></text>
+		</element>
+		<element kind="textField" uuid="931e571f-a107-45d6-a810-260e23682ecb" x="102" y="150" width="118" height="19" pattern="dd MMM yyyy">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+		<element kind="staticText" uuid="9511cc58-e5ea-4876-8b56-05ceb32d7415" x="2" y="150" width="100" height="18">
+			<text><![CDATA[Generated Date :]]></text>
+		</element>
+	</title>
+	<pageHeader height="35" splitType="Stretch"/>
+	<columnHeader height="34" splitType="Stretch">
+		<element kind="rectangle" uuid="c3174497-e11d-4723-bcbd-0891a6b4d82a" x="2" y="0" width="549" height="19" backcolor="#2C3E50"/>
+		<element kind="staticText" uuid="1fdd67fc-ac47-4da6-82b4-cee3724571ef" x="2" y="0" width="70" height="19" forecolor="#FFFFFF" hTextAlign="Center">
+			<text><![CDATA[Sale ID]]></text>
+		</element>
+		<element kind="staticText" uuid="e4c01c7f-b20f-4192-ac52-a284d5016b32" x="120" y="0" width="70" height="19" forecolor="#FFFFFF">
+			<text><![CDATA[Customer]]></text>
+		</element>
+		<element kind="staticText" uuid="70e1b301-11a6-4495-a6b9-e5cdfe7193d7" x="220" y="0" width="70" height="19" forecolor="#FFFFFF">
+			<text><![CDATA[Cashier]]></text>
+		</element>
+		<element kind="staticText" uuid="4f8df4ec-d5cf-42b5-ad0a-d9af64f8e12f" x="320" y="0" width="70" height="19" forecolor="#FFFFFF" hTextAlign="Center">
+			<text><![CDATA[Sale Date]]></text>
+		</element>
+		<element kind="staticText" uuid="8d26a40d-d85c-4cbc-b399-472fc9f36592" x="450" y="0" width="70" height="19" forecolor="#FFFFFF" hTextAlign="Center">
+			<text><![CDATA[Total Amount]]></text>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<element kind="textField" uuid="4cf9afdc-8ab0-4800-83d6-957f2fa20c58" x="2" y="0" width="78" height="19" hTextAlign="Center">
+				<expression><![CDATA[$F{sale_id}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="abd60518-a0f0-4312-ad0a-66e429871bc5"/>
+			</element>
+			<element kind="textField" uuid="5b58b489-a72d-4160-8d2f-42dde1244518" x="120" y="1" width="100" height="18">
+				<expression><![CDATA[$F{customer_name}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="093ca015-1ea4-4eda-acfb-4534552309dd"/>
+			</element>
+			<element kind="textField" uuid="798cfeab-bddb-4eff-906b-c319d60680f0" x="220" y="1" width="80" height="18">
+				<expression><![CDATA[$F{full_name}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="59b982fd-b779-4829-a000-97b068754ead"/>
+			</element>
+			<element kind="textField" uuid="a85ef999-66bd-4d55-ae01-dc84b82ea4f0" x="320" y="0" width="100" height="18" pattern="yyyy-MM-dd">
+				<expression><![CDATA[$F{sale_date}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e993dd1a-0b46-43e6-92f8-2080d0b24aed"/>
+			</element>
+			<element kind="textField" uuid="3e1ca911-6679-4bda-91d3-07160d195a78" x="450" y="2" width="100" height="15" hTextAlign="Center">
+				<expression><![CDATA[$F{total_amount}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b9fd18d1-d6b8-43dc-bfca-17081ffb8078"/>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch">
+		<element kind="textField" uuid="08102e0e-6142-4f4c-badf-079dcd037697" x="450" y="30" width="100" height="19" evaluationTime="Report" hTextAlign="Right">
+			<expression><![CDATA[$V{PAGE_NUMBER}]]></expression>
+		</element>
+	</pageFooter>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

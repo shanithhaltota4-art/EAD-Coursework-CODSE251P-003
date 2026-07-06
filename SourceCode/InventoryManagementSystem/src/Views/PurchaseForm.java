@@ -177,7 +177,27 @@ private void clearPurchaseForm() {
     model.setRowCount(0);
 
 }
+private void clearFields() {
 
+    generatePurchaseId();
+
+    txtBuyingPrice.setText("");
+    txtQuantity.setText("");
+    txtGrandTotal.setText("");
+
+    cmbSupplier.setSelectedIndex(0);
+    cmbProduct.setSelectedIndex(0);
+
+    DefaultTableModel model =
+            (DefaultTableModel) tblPurchase.getModel();
+
+    model.setRowCount(0);
+
+    tblPurchase.clearSelection();
+
+    cmbSupplier.requestFocus();
+
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -242,6 +262,7 @@ private void clearPurchaseForm() {
         btnSavePurchase.addActionListener(this::btnSavePurchaseActionPerformed);
 
         btnClear.setText("Clear");
+        btnClear.addActionListener(this::btnClearActionPerformed);
 
         jLabel7.setText("Grand Total");
 
@@ -487,6 +508,10 @@ private void clearPurchaseForm() {
         
         
     }//GEN-LAST:event_btnSavePurchaseActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+       clearFields();
+    }//GEN-LAST:event_btnClearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

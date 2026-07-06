@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import util.ActivityLogger;
 
 /**
  *
@@ -354,12 +355,13 @@ private void searchProducts() {
         bntClear.setForeground(new java.awt.Color(255, 255, 255));
         bntClear.setText("Clear");
         bntClear.setPreferredSize(new java.awt.Dimension(80, 35));
+        bntClear.addActionListener(this::bntClearActionPerformed);
 
         javax.swing.GroupLayout pnlActionsLayout = new javax.swing.GroupLayout(pnlActions);
         pnlActions.setLayout(pnlActionsLayout);
         pnlActionsLayout.setHorizontalGroup(
             pnlActionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlActionsHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+            .addComponent(pnlActionsHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
             .addGroup(pnlActionsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlActionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -370,7 +372,7 @@ private void searchProducts() {
                         .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(bntClear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pnlActionsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {bntClear, btnDelete, btnUpdate});
@@ -425,7 +427,7 @@ private void searchProducts() {
             .addGroup(pnlListHeaderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -496,8 +498,8 @@ private void searchProducts() {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlProductForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlActions, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addComponent(pnlActions, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(pnlProductList, javax.swing.GroupLayout.DEFAULT_SIZE, 1001, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -545,6 +547,12 @@ private void searchProducts() {
         pst.setString(6, status);
 
         int result = pst.executeUpdate();
+        
+        ActivityLogger.log(
+    "Product Added - " + txtProductName.getText(),
+    "Products",
+    "userId",
+    "Administrator");
 
         if(result > 0){
 
@@ -708,6 +716,10 @@ private void searchProducts() {
     private void txtSearchComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_txtSearchComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchComponentAdded
+
+    private void bntClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntClearActionPerformed
+        clearFields();
+    }//GEN-LAST:event_bntClearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 import java.text.SimpleDateFormat;
+import util.ActivityLogger;
 
 /**
  *
@@ -539,6 +540,13 @@ if(result > 0){
 
         pst2.close();
         pst3.close();
+        
+        ActivityLogger.log(
+    "Sale Completed - " + txtSaleId.getText(),
+    "Sales",
+    userId,
+    "Administrator"
+);
     }
 
     con.commit();
